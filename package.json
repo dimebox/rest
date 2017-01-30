@@ -35,9 +35,15 @@
     {
       "name": "Michael Jackson",
       "web": "https://github.com/mjackson"
+    },
+    {
+      "name": "Sander Remie",
+      "web": "https://github.com/rmi7"
     }
   ],
-  "dependencies": {},
+  "dependencies": {
+    "https-proxy-agent": "^1.0.0"
+  },
   "devDependencies": {
     "curl": "https://github.com/cujojs/curl/tarball/0.7.3",
     "eslint": "^2.13.1",
