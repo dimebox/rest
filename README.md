@@ -219,6 +219,7 @@ Contributors
 - Jeremy Grelle <jeremy.grelle@gmail.com>
 - John Hann <john@unscriptable.com>
 - Michael Jackson <mjijackson@gmail.com>
+- Sander Remie <user@rmi7.me>
 
 Please see CONTRIBUTING.md for details on how to contribute to this project.
 
