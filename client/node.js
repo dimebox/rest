@@ -86,6 +86,10 @@ module.exports = client(function node (request) {
       reject(response)
     }
 
+    if (request.agent) {
+        options.agent = request.agent;
+    }
+
     var clientRequest = client.request(options, function (clientResponse) {
       // Array of Buffers to collect response chunks
       var buffers = []
