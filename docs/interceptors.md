@@ -509,6 +509,47 @@ client({ path: '/dictionary/{term}', params: { term: 'hypermedia' } }).then(func
 });
 ```
 
+<a name="module-rest/interceptor/https-proxy"></a>
+#### Proxy Interceptor
+
+`rest/interceptor/httpsProxy` ([src](../interceptor/httpsProxy.js))
+
+**This only works with the node client (`rest/client/node`)**
+Creates a https proxy agent that will proxy the request through the given proxy. If a url is provided, this url will be used to create a
+`https-proxy-agent`, which will be saved in `request.agent`. The node client checks if `request.agent` exists, if it does it will send the request
+through the proxy.
+
+**Phases**
+
+- request
+
+**Configuration**
+
+<table>
+<tr>
+  <th>Property</th>
+  <th>Required?</th>
+  <th>Default</th>
+  <th>Description</th>
+</tr>
+<tr>
+  <td>url</td>
+  <td>optional</td>
+  <td><em>empty string</em></td>
+  <td>url of the proxy to use</td>
+</tr>
+</table>
+
+**Example**
+
+```javascript
+client = rest.wrap(httpsProxy, { url: 'http://127.0.0.1:3128' });
+client({ method: 'POST', path: 'http://example.com/messages', entity: 'hello world' }).then(function (response) {
+
+    assert.same('http://127.0.0.1:3128/', response.request.agent.proxy.href);
+});
+```
+
 
 <a name="interceptor-provided-auth"></a>
 ### Authentication Interceptors
@@ -1096,6 +1137,7 @@ The interceptors provided with rest.js provide are also good examples.  Here are
 - [rest/interceptor/defaultRequest](#module-rest/interceptor/defaultRequest)
 - [rest/interceptor/mime](#module-rest/interceptor/mime)
 - [rest/interceptor/hateoas](#module-rest/interceptor/hateoas)
+- [rest/interceptor/httpsProxy](#module-rest/interceptor/httpsProxy)
 
 <a name="interceptor-custom-concepts-config"></a>
 **Config Initialization**
