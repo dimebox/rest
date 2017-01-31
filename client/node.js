@@ -1,9 +1,10 @@
 /*
- * Copyright 2012-2016 the original author or authors
+ * Copyright 2012-2017 the original author or authors
  * @license MIT, see LICENSE.txt for details
  *
  * @author Jeremy Grelle
  * @author Scott Andrews
+ * author Sander Remie
  */
 
 'use strict'
@@ -84,6 +85,10 @@ module.exports = client(function node (request) {
       response.error = 'canceled'
       clientRequest.abort()
       reject(response)
+    }
+
+    if (request.agent) {
+        options.agent = request.agent;
     }
 
     var clientRequest = client.request(options, function (clientResponse) {
